@@ -50,10 +50,8 @@ public class MemberController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteMember(@PathVariable("id") Integer memberId, RedirectAttributes redirectAttributes) {
-        String message = "Member is deleted sucessfully";
+    public String deleteMember(@PathVariable("id") Integer memberId) {
         memberService.deleteMemberById(memberId);
-        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/member";
     }
 

@@ -60,10 +60,8 @@ public class AuthorController {
         return "redirect:/author/addAuthor";
     }
     @GetMapping("/delete/{authorId}")
-    public String deleteAuthor(@PathVariable("authorId") Integer authorId, RedirectAttributes redirectAttributes){
-        String message="author is deleted sucessfully";
+    public String deleteAuthor(@PathVariable("authorId") Integer authorId){
         authorService.deleteAuthorById(authorId);
-        redirectAttributes.addFlashAttribute("message",message);
         return "redirect:/author/home";
     }
 }

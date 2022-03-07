@@ -3,9 +3,10 @@ package com.rastapi.brs.utils;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class EmailSendUtil {
     public void sendEmail(String emailAddress) {
         try {

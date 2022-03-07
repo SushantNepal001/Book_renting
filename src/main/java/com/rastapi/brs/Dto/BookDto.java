@@ -18,9 +18,12 @@ public class BookDto {
     private Double rating;
     private Integer noOfPages;
     private Integer stockCount;
-    private Date published_date;
+    private String publishedDate;
+    //used while saving
+    private MultipartFile photo;
+    //used while sending data to frontend
     private String photoUrl;
-    private MultipartFile multipartFile;
+    // private MultipartFile multipartFile;
     private Integer categoryId;
     private List<Integer> authorId;
 }

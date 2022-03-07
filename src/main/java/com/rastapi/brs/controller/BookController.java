@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 @Controller
 @RequestMapping("/book")
 public class BookController {
@@ -38,7 +41,7 @@ public class BookController {
     }
 
     @PostMapping
-    public String saveBook(@ModelAttribute BookDto bookDto, RedirectAttributes redirectAttributes) {
+    public String saveBook(@ModelAttribute BookDto bookDto, RedirectAttributes redirectAttributes) throws IOException, ParseException {
         String message = "";
         bookDto = bookService.saveBook(bookDto);
         if (bookDto == null) {
@@ -59,11 +62,9 @@ public class BookController {
     }
 
     @GetMapping("/delete/{bookId}")
-    public String deleteCategory(@PathVariable("bookId") Integer bookId, RedirectAttributes redirectAttributes) {
-        String message = "Book is deleted sucessfully";
+    public String deleteBook(@PathVariable("bookId") Integer bookId) {
         bookService.deleteBookById(bookId);
-        redirectAttributes.addFlashAttribute("message", message);
-        return "redirect:/category";
+        return "redirect:/book";
     }
 
 

@@ -21,16 +21,13 @@
             <p>
                 Here, you can see the list of Book.
             </p>
-            <!--            <div style="text-align: right;">-->
-            <!--                <button class="btn btn-success">go right</button>-->
-            <!--            </div>-->
 
             <div class="col-md-8">
                 <h3> Book detail list </h3>
                 <hr>
                 <div style="text-align: right;">
                     <a th:href="@{/book/addBook}" class="btn btn-primary btn-lg active" role="button"
-                       aria-pressed="true">Add Book</a>
+                       aria-pressed="true">Create</a>
                 </div>
                 <br>
                 <table class="table table-striped">
@@ -65,44 +62,5 @@
         </section>
     </div>
 </div>
-<!--<div class="col-md-8">-->
-<!--    <h3> category detail list </h3>-->
-<!--    <hr>-->
-<!--    <a th:href="@{/category/addForm}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">add-->
-<!--        Category</a>-->
-<!--    <br>-->
-
-<!--    <table class="table table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th scope="col">SN</th>-->
-<!--            <th scope="col">Name</th>-->
-<!--            <th scope="col">Description</th>-->
-<!--            <th scope="col">Action</th>-->
-
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="c,iter: ${categoryDtoList}">-->
-
-<!--            <td th:text="${iter.index+1}"></td>-->
-<!--            <td th:text="${c.name}"></td>-->
-<!--            <td th:text="${c.description}"></td>-->
-
-
-<!--            <td><a th:href="@{category/find-by-id/}+${c.id}">-->
-<!--                <button class="btn btn-sm btn-info">Edit</button>-->
-<!--            </a></td>-->
-<!--            <td><a th:href="@{category/delete/}+${c.id}">-->
-<!--                <button class="btn btn-sm btn-danger">Delete</button>-->
-<!--            </a></td>-->
-<!--        </tr>-->
-
-<!--        </tbody>-->
-<!--    </table>-->
-
-<!--</div>-->
-
-
 </body>
 </html>

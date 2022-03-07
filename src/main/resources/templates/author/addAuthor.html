@@ -21,38 +21,37 @@
             <div class="header">
                 Here you can add author.
             </div>
-            <p>
-
-            </p>
             <div style="text-align: right;">
-                <button class="btn btn-success">back</button>
+                <a th:href="@{/author/home}" class="btn btn-primary btn-lg active" role="button"
+                   aria-pressed="true">Back</a>
             </div>
+
             <div class="row">
 
                 <form th:action="@{/author}" th:method="post" th:object="${authorDto}">
                     <input type="text" th:field="*{id}" hidden>
                     <div class="form-group">
                         <label>Author name</label>
-                        <input type="text" class="form-control" placeholder="category Name" th:field="*{name}" required>
+                        <input type="text" class="form-control" placeholder="Name" th:field="*{name}" required>
 
                     </div>
                     <div class="form-group">
                         <label>
                             email
                         </label>
-                        <input type="email" class="form-control" placeholder="description" th:field="*{email}" required>
+                        <input type="email" class="form-control" placeholder="abc@gmail.com" th:field="*{email}" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label>
                             Mobile Number
                         </label>
-                        <input type="text" class="form-control" placeholder="description" th:field="*{mobileNumber}"
+                        <input type="number" class="form-control" th:field="*{mobileNumber}"
                                required>
                     </div>
                     <br>
 
-                    <br>
+
                     <button type="submit" class="btn btn-primary">Save</button>
                     <button type="submit" class="btn btn-danger">Reset</button>
 

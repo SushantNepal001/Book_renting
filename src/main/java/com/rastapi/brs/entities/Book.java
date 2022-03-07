@@ -31,9 +31,12 @@ public class Book {
     @Column(name="rating")
     private Double rating;
 
-    private Date published_date;
+    @Column(name="stock_count")
+    private Integer stockCount;
 
-    @Column(name="photo_url",length = 200)
+    private Date publishedDate;
+
+    @Column(name="photo_url")
     private String photoUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
