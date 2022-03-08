@@ -20,16 +20,16 @@
     </div>
 
     <nav class="sidebar">
-        <div class="text">
-            Book Renting system
+        <div class="text ">
+            <a class="text-decoration-none text-white" th:href="@{/}">Book Renting system </a>
         </div>
         <ul>
             <!--            <li class="active"><a href="#">Dashboard</a></li>-->
             <li>
                 <a href="#" class="feat-btn">Master Data Setup
-                    <span class="fas fa-caret-down first"></span>
+<!--                    <span class="fas fa-caret-down first"></span>-->
                 </a>
-                <ul class="feat-show">
+                <ul class="d-block">
                     <li><a th:href="@{/author/home}">Author Setup</a></li>
                     <li><a th:href="@{/category}">Category Setup</a></li>
                     <li><a th:href="@{/member}">Member Setup</a></li>
@@ -38,11 +38,11 @@
             </li>
             <li>
                 <a href="#" class="feat-btn">Transactions
-                    <span class="fas fa-caret-down first"></span>
+<!--                    <span class="fas fa-caret-down second"></span>-->
                 </a>
-                <ul class="feat-show">
-                    <li><a href="#">Rent Book</a></li>
-                    <li><a href="#">Return Book</a></li>
+                <ul class="d-block">
+                    <li><a th:href="@{/transaction/rent}">Rent Book</a></li>
+                    <li><a th:href="@{/transaction/return}">Return Book</a></li>
 
                 </ul>
             </li>

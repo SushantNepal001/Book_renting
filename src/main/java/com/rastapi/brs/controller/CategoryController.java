@@ -39,7 +39,7 @@ public class CategoryController {
         if (categoryDto == null) {
             message = "category cannot be saved";
         } else {
-            message = categoryDto.getId() != null ? "Category Updated successfully" : "Category save successfully!";
+            message = categoryDto.getId() != null ? "Category Saved successfully" : "Category updated successfully!";
         }
         redirectAttributes.addFlashAttribute("message", message);
 

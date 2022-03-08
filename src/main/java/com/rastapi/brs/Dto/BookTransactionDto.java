@@ -1,5 +1,6 @@
 package com.rastapi.brs.Dto;
 
+import com.rastapi.brs.enums.RentType;
 import lombok.*;
 
 import java.util.Date;
@@ -11,9 +12,14 @@ import java.util.Date;
 public class BookTransactionDto {
     private Integer id;
     private String code;
-    private Date formDate;
-    private Date toDate;
-    private Boolean rentStatus;
-    private Boolean activeClosed;
+    private String formDate;
+    private String toDate;
+    private Integer noOfDays;
+    private RentType rentType;
+//    private Boolean rentStatus;
+    private BookDto bookDto;
+    private MemberDto memberDto;
+   private  Integer bookId;
+   private Integer memberId;
 
 }

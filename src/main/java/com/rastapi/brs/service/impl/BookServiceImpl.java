@@ -1,9 +1,7 @@
 package com.rastapi.brs.service.impl;
 
 import com.rastapi.brs.Dto.BookDto;
-import com.rastapi.brs.Dto.CategoryDto;
 import com.rastapi.brs.entities.Book;
-import com.rastapi.brs.entities.Category;
 import com.rastapi.brs.repo.AuthorRepo;
 import com.rastapi.brs.repo.BookRepo;
 import com.rastapi.brs.repo.CategoryRepo;
@@ -41,10 +39,10 @@ public class BookServiceImpl implements BookService {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date pubDate = simpleDateFormat.parse(bookDto.getPublishedDate());
-        MultipartFile muiltipartFile =bookDto.getPhoto();
-        String filepath=fIleStorageUtils.StoreFile(muiltipartFile);
+        MultipartFile muiltipartFile = bookDto.getPhoto();
+        String filepath = fIleStorageUtils.StoreFile(muiltipartFile);
 
-        Book entity=new Book().builder()
+        Book entity = new Book().builder()
                 .id(bookDto.getId())
                 .name(bookDto.getName())
                 .category(categoryRepo.findById(bookDto.getCategoryId()).get())
@@ -56,15 +54,15 @@ public class BookServiceImpl implements BookService {
                 .publishedDate(pubDate)
                 .photoUrl(filepath)
                 .build();
-        entity=bookRepo.save(entity);
+        entity = bookRepo.save(entity);
 
         return BookDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
-                .isbn(bookDto.getIsbn())
-                .categoryId(bookDto.getCategoryId())
+                .isbn(entity.getIsbn())
+                .categoryId(entity.getCategory().getId())
                 .authorId(entity.getAuthorList().stream().map(
-                        x-> x.getId()).collect(Collectors.toList()))
+                        x -> x.getId()).collect(Collectors.toList()))
                 .noOfPages(entity.getNoOfPages())
                 .rating(entity.getRating())
                 .stockCount(entity.getStockCount())
@@ -72,10 +70,11 @@ public class BookServiceImpl implements BookService {
                 .publishedDate(simpleDateFormat.format(entity.getPublishedDate()))
                 .build();
     }
+
     @Override
     public List<BookDto> findAllBook() {
-        List<Book> bookList=bookRepo.findAll();
-        return  bookList.stream().map(entity->BookDto.builder()
+        List<Book> bookList = bookRepo.findAll();
+        return bookList.stream().map(entity -> BookDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .isbn(entity.getIsbn())
@@ -85,17 +84,22 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDto findById(Integer bookId) {
         Book b;
-        Optional<Book> optionalBook=bookRepo.findById(bookId);
-        if(optionalBook.isPresent()){
-            b=optionalBook.get();
+//        BookDto bookDto;
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date pubDate = simpleDateFormat.parse(bookDto.getPublishedDate());
+        Optional<Book> optionalBook = bookRepo.findById(bookId);
+        if (optionalBook.isPresent()) {
+            b = optionalBook.get();
             return BookDto.builder()
-                    .id(b.getId())
                     .name(b.getName())
                     .isbn(b.getIsbn())
                     .photoUrl(b.getPhotoUrl())
                     .stockCount(b.getStockCount())
+//                    .publishedDate(simpleDateFormat.format(b.getPublishedDate()))
                     .rating(b.getRating())
                     .noOfPages(b.getNoOfPages())
+                    .categoryId(b.getCategory().getId())
+                    .authorId((b.getAuthorList().stream().map(x -> x.getId()).collect(Collectors.toList())))
                     .build();
         }
         return null;

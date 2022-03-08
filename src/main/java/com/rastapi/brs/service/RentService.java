@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface RentService {
     List<RentDto> findAllRent();
-
+    RentDto saveRent(RentDto rentDto);
+    RentDto findById(Integer id);
+    void deleteRentById(Integer id);
 }

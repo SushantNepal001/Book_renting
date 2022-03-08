@@ -1,5 +1,6 @@
 package com.rastapi.brs.entities;
 
+import com.rastapi.brs.enums.RentType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,10 +22,12 @@ public class BookTransactions {
 
     private String code;
 
-    private Date form_date;
+    private Date formDate;
 
     private Date toDate;
 
+    @Enumerated(value =EnumType.STRING)
+    private RentType rentType;
 //    private Boolean rent_status;
 
     @ManyToOne(fetch=FetchType.LAZY)
