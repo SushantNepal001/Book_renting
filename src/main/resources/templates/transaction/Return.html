@@ -34,18 +34,15 @@
                     <tr>
                         <th scope="col">SN</th>
                         <th scope="col">Book Name</th>
-                        <th scope="col">Member Name</th>
                         <th scope="col">Code</th>
                         <th scope="col">Action</th>
-
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="r,iter: ${transactionDtoList}">
 
                         <td th:text="${iter.index+1}"></td>
-                        <td th:text="${r.bookDto.name}"></td>
-                        <td th:text="${r.memberDto.name}"></td>
+                        <td th:text="${r.bookName}"></td>
                         <td th:text="${r.code}"></td>
 
 

@@ -27,27 +27,32 @@
             </div>
 
             <div class="row">
-
                 <form th:action="@{/author}" th:method="post" th:object="${authorDto}">
+                    <!--<div class="error-message-container database-error" th:if="${errorMessage}">
+                        <div class="error-message" th:text="${errorMessage}"></div>
+                        <a class="cross" href="#"><i class="fa-solid fa-xmark"></i></a>
+                    </div>-->
                     <input type="text" th:field="*{id}" hidden>
                     <div class="form-group">
                         <label>Author name</label>
-                        <input type="text" class="form-control" placeholder="Name" th:field="*{name}" required>
-
+                        <input type="text" class="form-control" placeholder="Name" th:field="*{name}" >
+                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                                      style="color:red; font-style:italic;"></span>
                     </div>
                     <div class="form-group">
                         <label>
                             email
                         </label>
-                        <input type="email" class="form-control" placeholder="abc@gmail.com" th:field="*{email}" required>
+                        <input type="text" class="form-control" placeholder="abc@gmail.com" th:field="*{email}" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label>
                             Mobile Number
                         </label>
-                        <input type="number" class="form-control" th:field="*{mobileNumber}"
-                               required>
+                        <input type="number" class="form-control" th:field="*{mobileNumber}" required
+                        >
+
                     </div>
                     <br>
 

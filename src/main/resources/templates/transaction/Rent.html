@@ -34,7 +34,6 @@
                     <tr>
                         <th scope="col">SN</th>
                         <th scope="col">Book Name</th>
-                        <th scope="col">Member Name</th>
                         <th scope="col">Code</th>
                         <th scope="col">Action</th>
 
@@ -44,15 +43,14 @@
                     <tr th:each="r,iter: ${transactionDtoList}">
 
                         <td th:text="${iter.index+1}"></td>
-                        <td th:text="${r.bookDto.name}"></td>
-                        <td th:text="${r.memberDto.name}"></td>
+                        <td th:text="${r.bookName}"></td>
                         <td th:text="${r.code}"></td>
 
 
-                        <td><a th:href="@{transaction/return/find-by-id/}+${r.id}">
+                        <td><a th:href="@{/transaction/find-by-id/}+${r.id}">
                             <button class="btn btn-sm btn-info">Edit</button>
                         </a></td>
-                        <td><a th:href="@{transaction/return/delete/}+${r.id}">
+                        <td><a th:href="@{/transaction/delete/}+${r.id}">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </a></td>
                     </tr>

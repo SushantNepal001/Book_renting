@@ -41,6 +41,7 @@
                                 <select th:field="*{code}" class="selecting" name="">
                                     <option th:each="code : ${codes}"
                                             th:text="${code}"
+                                            th:value="${code}"
                                     ></option>
 
                                 </select>
@@ -61,7 +62,7 @@
                                     <label>Date of return</label>
                                     <input type="Date" class="form-control" placeholder="" th:field="*{toDate}"
                                            required>
-
+                                </div>
                                 </div>
                             </div>
                             <div class="row">
